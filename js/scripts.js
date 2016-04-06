@@ -9,8 +9,8 @@ function Space (location, state) {
   var state = state;
 }
 
-function Board (spaces) {
-  var occupiedSpaces = new Array(9);
+function Board (occupiedSpaces) {
+  this.occupiedSpaces = occupiedSpaces;
 }
 
 function Game (turn, gameOver) {
@@ -22,8 +22,14 @@ Player.prototype.mark = function() {
   return Player.mark;
 }
 
-Board.prototype.find = function(row, column) {
+Board.prototype.find = function() {
 
+}
+
+Board.prototype.setMarkToSpace = function(input) {
+  // var occupiedSpaces = new Array(9);
+  // var inputtedSpace = input;
+  // occupiedSpaces[inputtedSpace] = "X";
 }
 
 // game flow
@@ -48,18 +54,21 @@ Board.prototype.find = function(row, column) {
 //
 //
 
-
-
 // USER INTERFACE LOGIC
-
 $(document).ready(function() {
   $("form#space-choice").submit(function(event) {
     event.preventDefault();
 
     var inputtedSpace = $("select.new-move").val();
-    console.log(inputtedSpace);
 
     $("#space" + inputtedSpace).text("X");
 
+    inputtedSpace = parseInt(inputtedSpace);
+
+    var newBoard = new Board (new Array(9));
+    newBoard.occupiedSpaces[inputtedSpace] = "X";
+
+    console.log(newBoard);
+    console.log(newBoard.occupiedSpaces);
   });
 });
