@@ -1,7 +1,11 @@
-#space1, #space2, #space3, #space4, #space5, #space6, #space7, #space8, #space9 {
+#space0, #space1, #space2, #space3, #space4, #space5, #space6, #space7, #space8 {
   height: 300px;
   width: 300px;
   border: solid black 2px;
+}
+
+#markO {
+  display: none;
 }
 
 .spaceNumberDisplay {

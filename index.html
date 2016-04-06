@@ -14,16 +14,16 @@
       <!-- Start Row 1 -->
       <div class="row" id="row1">
 
+        <div class="col-md-4" id="space0">
+          <span class="spaceNumberDisplay">index 0</span>
+        </div>
+
         <div class="col-md-4" id="space1">
-          <span class="spaceNumberDisplay">1</span>
+          <span class="spaceNumberDisplay">index 1</span>
         </div>
 
         <div class="col-md-4" id="space2">
-          <span class="spaceNumberDisplay">2</span>
-        </div>
-
-        <div class="col-md-4" id="space3">
-          <span class="spaceNumberDisplay">3</span>
+          <span class="spaceNumberDisplay">index 2</span>
         </div>
 
       </div>
@@ -32,16 +32,16 @@
 
       <div class="row" id="row2">
 
+        <div class="col-md-4" id="space3">
+          <span class="spaceNumberDisplay">index 3</span>
+        </div>
+
         <div class="col-md-4" id="space4">
-          <span class="spaceNumberDisplay">4</span>
+          <span class="spaceNumberDisplay">index 4</span>
         </div>
 
         <div class="col-md-4" id="space5">
-          <span class="spaceNumberDisplay">5</span>
-        </div>
-
-        <div class="col-md-4" id="space6">
-          <span class="spaceNumberDisplay">6</span>
+          <span class="spaceNumberDisplay">index 5</span>
         </div>
 
       </div>
@@ -50,16 +50,16 @@
 
       <div class="row" id="row3">
 
+        <div class="col-md-4" id="space6">
+          <span class="spaceNumberDisplay">index 6</span>
+        </div>
+
         <div class="col-md-4" id="space7">
-          <span class="spaceNumberDisplay">7</span>
+          <span class="spaceNumberDisplay">index 7</span>
         </div>
 
         <div class="col-md-4" id="space8">
-          <span class="spaceNumberDisplay">8</span>
-        </div>
-
-        <div class="col-md-4" id="space9">
-          <span class="spaceNumberDisplay">9</span>
+          <span class="spaceNumberDisplay">index 8</span>
         </div>
 
       </div>
@@ -68,20 +68,20 @@
 
       <form id="space-choice">
         <select class="form-control new-move">
-          <option id="spaceChoice1" value="1">SPACE #1</option>
-          <option id="spaceChoice2" value="2">SPACE #2</option>
-          <option id="spaceChoice3" value="3">SPACE #3</option>
-          <option id="spaceChoice4" value="4">SPACE #4</option>
-          <option id="spaceChoice5" value="5">SPACE #5</option>
-          <option id="spaceChoice2" value="6">SPACE #6</option>
-          <option id="spaceChoice3" value="7">SPACE #7</option>
-          <option id="spaceChoice4" value="8">SPACE #8</option>
-          <option id="spaceChoice5" value="9">SPACE #9</option>
+          <option id="spaceChoice1" value="0">SPACE #0</option>
+          <option id="spaceChoice2" value="1">SPACE #1</option>
+          <option id="spaceChoice3" value="2">SPACE #2</option>
+          <option id="spaceChoice4" value="3">SPACE #3</option>
+          <option id="spaceChoice5" value="4">SPACE #4</option>
+          <option id="spaceChoice2" value="5">SPACE #5</option>
+          <option id="spaceChoice3" value="6">SPACE #6</option>
+          <option id="spaceChoice4" value="7">SPACE #7</option>
+          <option id="spaceChoice5" value="8">SPACE #8</option>
         </select>
 
-        <button type="submit" class="btn btn-danger">Mark X</button>
+        <button type="submit" class="btn btn-danger" id="markX">Mark X</button>
 
-        <button type="submit" class="btn btn-info">Mark O</button>
+        <button type="submit" class="btn btn-info" id="markO">Mark O</button>
 
       </form>
 
