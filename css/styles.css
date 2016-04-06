@@ -1,8 +1,12 @@
 #space0, #space1, #space2, #space3, #space4, #space5, #space6, #space7, #space8 {
   height: 300px;
   width: 300px;
-  border: solid black 2px;
-  font-size: 3em;
+  border: solid white 2px;
+  font-size: 11em;
+  text-align: center;
+  padding: 35px;
+  background-color: black;
+  color: white;
 }
 
 /*#markO {

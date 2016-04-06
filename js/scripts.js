@@ -31,6 +31,12 @@ function Board (occupiedSpaces) {
 // Board.prototype.find = function() {
 // }
 
+Board.prototype.checkIfSpaceTaken = function (marksOnBoard) {
+  if ( marksOnBoard["#space" + inputtedSpace] === "X" || marksOnBoard["#space" + inputtedSpace] === "O") {
+    alert("HEY DON'T DO THAT PUNK");
+  }
+}
+
 Board.prototype.setMarkToSpace = function(input) {
   // var occupiedSpaces = new Array(9);
   // var inputtedSpace = input;
@@ -125,14 +131,14 @@ $(document).ready(function() {
     board.checkWinningConditionX(board.occupiedSpaces);
 
     console.log(board.checkWinningConditionX(board.occupiedSpaces));
-
-    // newBoard.checkWinningCondition();
-    // console.log(newBoard.checkWinningCondition);
-
   });
 
   $("form#space-choice #markO").click(function() {
+
     var inputtedSpace = $("select.new-move").val();
+
+    // debugger; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!BEGIN HERE
+    // board.checkIfSpaceTaken(occupiedSpaces);
 
     $("#space" + inputtedSpace).text("O");
 
