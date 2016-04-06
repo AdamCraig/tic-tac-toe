@@ -1,8 +1,8 @@
 // BUSINESS LOGIC
 
-// function Player (mark) {
-//   this.markType = mark;
-// }
+function Player (mark) {
+  this.mark = mark;
+}
 
 // function Space (location, state) {
 //   this.location = location;
@@ -37,7 +37,7 @@ Board.prototype.setMarkToSpace = function(input) {
   // occupiedSpaces[inputtedSpace] = "X";
 }
 
-Board.prototype.checkWinningCondition = function(allMarks) {
+Board.prototype.checkWinningConditionX = function(allMarks) {
   if ( (allMarks[0] === "X") && (allMarks[1] === "X") && (allMarks[2] === "X") ) {
     return true;
   } else if ( (allMarks[3] === "X") && (allMarks[4] === "X") && (allMarks[5] === "X") ) {
@@ -57,7 +57,28 @@ Board.prototype.checkWinningCondition = function(allMarks) {
   } else {
     return false;
   }
-  // check for specific combinations inside the occupiedSpaces array
+}
+
+Board.prototype.checkWinningConditionO = function(allMarks) {
+  if ( (allMarks[0] === "O") && (allMarks[1] === "O") && (allMarks[2] === "O") ) {
+    return true;
+  } else if ( (allMarks[3] === "O") && (allMarks[4] === "O") && (allMarks[5] === "O") ) {
+    return true;
+  } else if ( (allMarks[6] === "O") && (allMarks[7] === "O") && (allMarks[8] === "O") ) {
+    return true;
+  } else if ( (allMarks[0] === "O") && (allMarks[3] === "O") && (allMarks[6] === "O") ) {
+    return true;
+  } else if ( (allMarks[1] === "O") && (allMarks[4] === "O") && (allMarks[7] === "O") ) {
+    return true;
+  } else if ( (allMarks[2] === "O") && (allMarks[5] === "O") && (allMarks[8] === "O") ) {
+    return true;
+  } else if ( (allMarks[0] === "O") && (allMarks[4] === "O") && (allMarks[8] === "O") ) {
+    return true;
+  } else if ( (allMarks[2] === "O") && (allMarks[4] === "O") && (allMarks[6] === "O") ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // game flow
@@ -85,7 +106,7 @@ Board.prototype.checkWinningCondition = function(allMarks) {
 // USER INTERFACE LOGIC
 $(document).ready(function() {
 
-  var newBoard = new Board (new Array(9));
+  var board = new Board (new Array(9));
 
   $("form#space-choice").submit(function(event) {
     event.preventDefault();
@@ -96,18 +117,35 @@ $(document).ready(function() {
 
     inputtedSpace = parseInt(inputtedSpace);
 
-    newBoard.occupiedSpaces[inputtedSpace] = "X";
+    board.occupiedSpaces[inputtedSpace] = "X";
 
-    console.log(newBoard);
-    console.log(newBoard.occupiedSpaces);
+    console.log(board);
+    console.log(board.occupiedSpaces);
 
-    newBoard.checkWinningCondition(newBoard.occupiedSpaces);
+    board.checkWinningConditionX(board.occupiedSpaces);
 
-    console.log(newBoard.checkWinningCondition(newBoard.occupiedSpaces));
-
+    console.log(board.checkWinningConditionX(board.occupiedSpaces));
 
     // newBoard.checkWinningCondition();
     // console.log(newBoard.checkWinningCondition);
+
+  });
+
+  $("form#space-choice #markO").click(function() {
+    var inputtedSpace = $("select.new-move").val();
+
+    $("#space" + inputtedSpace).text("O");
+
+    inputtedSpace = parseInt(inputtedSpace);
+
+    board.occupiedSpaces[inputtedSpace] = "O";
+
+    console.log(board);
+    console.log(board.occupiedSpaces);
+
+    board.checkWinningConditionO(board.occupiedSpaces);
+
+    console.log(board.checkWinningConditionO(board.occupiedSpaces));
 
   });
 });
