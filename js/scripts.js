@@ -1,35 +1,63 @@
 // BUSINESS LOGIC
 
-function Player (mark) {
-  var markType = mark;
-}
+// function Player (mark) {
+//   this.markType = mark;
+// }
 
-function Space (location, state) {
-  var location = location;
-  var state = state;
-}
+// function Space (location, state) {
+//   this.location = location;
+//   this.state = state;
+// }
 
 function Board (occupiedSpaces) {
   this.occupiedSpaces = occupiedSpaces;
 }
 
-function Game (turn, gameOver) {
-  var turn = 0;
-  var gameOver = false;
-}
+// function Game (winner) {
+//   this.winner = winner;
+//   // this.turn = turn;
+//   // this.gameOver = gameOver;
+//   // var turn = 0;
+//   // var gameOver = false;
+// }
 
-Player.prototype.mark = function() {
-  return Player.mark;
-}
+// Player.prototype.mark = function() {
+//   return Player.mark;
+// }
 
-Board.prototype.find = function() {
+// Board.prototype.initialize = function () {
+// }
 
-}
+// Board.prototype.find = function() {
+// }
 
 Board.prototype.setMarkToSpace = function(input) {
   // var occupiedSpaces = new Array(9);
   // var inputtedSpace = input;
   // occupiedSpaces[inputtedSpace] = "X";
+}
+
+Board.prototype.checkWinningCondition = function(allMarks) {
+  if ( (allMarks[0] === "X") && (allMarks[1] === "X") && (allMarks[2] === "X") ) {
+    return true;
+  } else if ( (allMarks[3] === "X") && (allMarks[4] === "X") && (allMarks[5] === "X") ) {
+    return true;
+  } else if ( (allMarks[6] === "X") && (allMarks[7] === "X") && (allMarks[8] === "X") ) {
+    return true;
+  } else if ( (allMarks[0] === "X") && (allMarks[3] === "X") && (allMarks[6] === "X") ) {
+    return true;
+  } else if ( (allMarks[1] === "X") && (allMarks[4] === "X") && (allMarks[7] === "X") ) {
+    return true;
+  } else if ( (allMarks[2] === "X") && (allMarks[5] === "X") && (allMarks[8] === "X") ) {
+    return true;
+  } else if ( (allMarks[0] === "X") && (allMarks[4] === "X") && (allMarks[8] === "X") ) {
+    return true;
+  } else if ( (allMarks[2] === "X") && (allMarks[4] === "X") && (allMarks[6] === "X") ) {
+    return true;
+  } else {
+    return false;
+  }
+  // check for specific combinations inside the occupiedSpaces array
 }
 
 // game flow
@@ -56,6 +84,9 @@ Board.prototype.setMarkToSpace = function(input) {
 
 // USER INTERFACE LOGIC
 $(document).ready(function() {
+
+  var newBoard = new Board (new Array(9));
+
   $("form#space-choice").submit(function(event) {
     event.preventDefault();
 
@@ -65,10 +96,18 @@ $(document).ready(function() {
 
     inputtedSpace = parseInt(inputtedSpace);
 
-    var newBoard = new Board (new Array(9));
     newBoard.occupiedSpaces[inputtedSpace] = "X";
 
     console.log(newBoard);
     console.log(newBoard.occupiedSpaces);
+
+    newBoard.checkWinningCondition(newBoard.occupiedSpaces);
+
+    console.log(newBoard.checkWinningCondition(newBoard.occupiedSpaces));
+
+
+    // newBoard.checkWinningCondition();
+    // console.log(newBoard.checkWinningCondition);
+
   });
 });
