@@ -1,0 +1,9 @@
+#space1, #space2, #space3, #space4, #space5, #space6, #space7, #space8, #space9 {
+  height: 300px;
+  width: 300px;
+  border: solid black 2px;
+}
+
+.spaceNumberDisplay {
+  font-size: 4em;
+}
