@@ -9,19 +9,25 @@
   color: white;
 }
 
+#markO {
+  display: none;
+  font-size: 100px;
+}
+
+#markX {
+  font-size: 100px;
+}
+
+.new-move {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50%;
+  font-size: 18px;
+}
+
 .result {
   display: none;
   font-size: 150px;
   font-weight: bold;
   color: darkgreen;
 }
-
-/*#markO {
-  display: none;
-}*/
-
-
-
-/*.spaceNumberDisplay {
-  font-size: 4em;
-}*/

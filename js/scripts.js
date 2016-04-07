@@ -103,7 +103,7 @@ Board.prototype.checkWinningConditionO = function(allMarks) {
 // }
 // loop rounds until there's a winner or the board is full
 // check for winning condition
-// if board is full and no winner, declare tie
+// if board is full and no winner, declare tie*********************
 //
 //
 
@@ -122,17 +122,19 @@ $(document).ready(function() {
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
       board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player1.mark);
 
+      $("#markX").slideUp();
+      $("#markO").delay(500).slideDown();
+
       inputtedSpace = parseInt(inputtedSpace);
 
-      console.log(board.occupiedSpaces);
-
       if ( (board.checkWinningConditionX(board.occupiedSpaces) ) === true) {
-        $(".player-mark").prepend("Player X")
+        setTimeout(function() { $("#markO").hide(); }, 500);
+        $(".new-move").hide();
+        $(".player-mark").prepend("Player X");
         $(".result").fadeIn();
+
         //show play again button
       }
-
-      console.log(board.checkWinningConditionX(board.occupiedSpaces));
     }
 
   });
@@ -144,18 +146,17 @@ $(document).ready(function() {
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
       board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player2.mark);
 
+      $("#markO").slideUp();
+      $("#markX").delay(500).slideDown();
+
       inputtedSpace = parseInt(inputtedSpace);
 
-      console.log(board.occupiedSpaces);
-
       if ( (board.checkWinningConditionO(board.occupiedSpaces) ) === true) {
-        $(".player-mark").prepend("Player O")
+        setTimeout(function() { $("#markX").hide(); }, 500);
+        $(".new-move").hide();
+        $(".player-mark").prepend("Player O");
         $(".result").fadeIn();
-        //show play again button
       }
-
-      console.log(board.checkWinningConditionO(board.occupiedSpaces));
     }
-
   });
 });
