@@ -13,13 +13,9 @@ function Board (occupiedSpaces) {
   this.occupiedSpaces = occupiedSpaces;
 }
 
-// function Game (winner) {
-//   this.winner = winner;
-//   // this.turn = turn;
-//   // this.gameOver = gameOver;
-//   // var turn = 0;
-//   // var gameOver = false;
-// }
+function Game (gameOver) {
+  this.gameOver = gameOver;
+}
 
 // Player.prototype.mark = function() {
 //   return Player.mark;
@@ -38,11 +34,11 @@ Board.prototype.checkIfSpaceTaken = function (marksOnBoard, inputtedSpace) {
   } else {
     return false;
   }
-}
+} // ************************WIGGLE WIGGLE WIGGLE*****
 
-Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace) {
-  $("#space" + inputtedSpace).text("X");
-  marksOnBoard[inputtedSpace] = "X";
+Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace, playerMark) {
+  $("#space" + inputtedSpace).text(playerMark);
+  marksOnBoard[inputtedSpace] = playerMark;
 }
 
 Board.prototype.checkWinningConditionX = function(allMarks) {
@@ -115,44 +111,51 @@ Board.prototype.checkWinningConditionO = function(allMarks) {
 $(document).ready(function() {
 
   var board = new Board (new Array(9));
+  var player1 = new Player ("X");
+  var player2 = new Player ("O");
 
   $("form#space-choice").submit(function(event) {
     event.preventDefault();
 
     var inputtedSpace = $("select.new-move").val();
 
-    board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace);
+    if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
+      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player1.mark);
 
-    board.setMarkToSpace(board.occupiedSpaces, inputtedSpace);
-    // $("#space" + inputtedSpace).text("X");
-    // board.occupiedSpaces[inputtedSpace] = "X";
+      inputtedSpace = parseInt(inputtedSpace);
 
-    inputtedSpace = parseInt(inputtedSpace);
+      console.log(board.occupiedSpaces);
 
-    console.log(board.occupiedSpaces);
+      if ( (board.checkWinningConditionX(board.occupiedSpaces) ) === true) {
+        $(".player-mark").prepend("Player X")
+        $(".result").fadeIn();
+        //show play again button
+      }
 
-    board.checkWinningConditionX(board.occupiedSpaces);
+      console.log(board.checkWinningConditionX(board.occupiedSpaces));
+    }
 
-    console.log(board.checkWinningConditionX(board.occupiedSpaces));
   });
 
   $("form#space-choice #markO").click(function() {
 
     var inputtedSpace = $("select.new-move").val();
 
-    board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace);
+    if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
+      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player2.mark);
 
-    $("#space" + inputtedSpace).text("O");
+      inputtedSpace = parseInt(inputtedSpace);
 
-    inputtedSpace = parseInt(inputtedSpace);
+      console.log(board.occupiedSpaces);
 
-    board.occupiedSpaces[inputtedSpace] = "O";
+      if ( (board.checkWinningConditionO(board.occupiedSpaces) ) === true) {
+        $(".player-mark").prepend("Player O")
+        $(".result").fadeIn();
+        //show play again button
+      }
 
-    console.log(board.occupiedSpaces);
-
-    board.checkWinningConditionO(board.occupiedSpaces);
-
-    console.log(board.checkWinningConditionO(board.occupiedSpaces));
+      console.log(board.checkWinningConditionO(board.occupiedSpaces));
+    }
 
   });
 });
