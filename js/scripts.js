@@ -1,7 +1,8 @@
 // BUSINESS LOGIC
 
-function Player (mark) {
+function Player (mark, playerColor) {
   this.mark = mark;
+  this.playerColor = playerColor;
 }
 
 // function Space (location, state) {
@@ -36,8 +37,9 @@ Board.prototype.checkIfSpaceTaken = function (marksOnBoard, inputtedSpace) {
   }
 } // ************************WIGGLE WIGGLE WIGGLE*****
 
-Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace, playerMark) {
+Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace, playerMark, playerColor) {
   $("#space" + inputtedSpace).text(playerMark);
+  $("#space" + inputtedSpace).css("background-color", playerColor);
   marksOnBoard[inputtedSpace] = playerMark;
 }
 
@@ -111,8 +113,8 @@ Board.prototype.checkWinningConditionO = function(allMarks) {
 $(document).ready(function() {
 
   var board = new Board (new Array(9));
-  var player1 = new Player ("X");
-  var player2 = new Player ("O");
+  var player1 = new Player ("X", "#D9534F");
+  var player2 = new Player ("O", "#5BC0DE");
 
   $("form#space-choice").submit(function(event) {
     event.preventDefault();
@@ -120,7 +122,7 @@ $(document).ready(function() {
     var inputtedSpace = $("select.new-move").val();
 
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
-      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player1.mark);
+      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player1.mark, player1.playerColor);
 
       $("#markX").slideUp();
       $("#markO").delay(500).slideDown();
@@ -132,6 +134,7 @@ $(document).ready(function() {
         $(".new-move").hide();
         $(".player-mark").prepend("Player X");
         $(".result").fadeIn();
+        $("#play-again").fadeIn();
 
         //show play again button
       }
@@ -144,7 +147,7 @@ $(document).ready(function() {
     var inputtedSpace = $("select.new-move").val();
 
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
-      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player2.mark);
+      board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player2.mark, player2.playerColor);
 
       $("#markO").slideUp();
       $("#markX").delay(500).slideDown();
@@ -156,6 +159,7 @@ $(document).ready(function() {
         $(".new-move").hide();
         $(".player-mark").prepend("Player O");
         $(".result").fadeIn();
+        $("#play-again").fadeIn();
       }
     }
   });

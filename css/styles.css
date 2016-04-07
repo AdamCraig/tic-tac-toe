@@ -18,6 +18,11 @@
   font-size: 100px;
 }
 
+#play-again {
+  display: none;
+  font-size: 100px;
+}
+
 .new-move {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -30,4 +35,8 @@
   font-size: 150px;
   font-weight: bold;
   color: darkgreen;
+}
+
+h1 {
+  font-size: 50px;
 }
