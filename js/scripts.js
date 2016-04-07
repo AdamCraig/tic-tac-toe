@@ -31,16 +31,18 @@ function Board (occupiedSpaces) {
 // Board.prototype.find = function() {
 // }
 
-Board.prototype.checkIfSpaceTaken = function (marksOnBoard) {
-  if ( marksOnBoard["#space" + inputtedSpace] === "X" || marksOnBoard["#space" + inputtedSpace] === "O") {
-    alert("HEY DON'T DO THAT PUNK");
+Board.prototype.checkIfSpaceTaken = function (marksOnBoard, inputtedSpace) {
+  if ( marksOnBoard[inputtedSpace] === "X" || marksOnBoard[inputtedSpace] === "O") {
+    alert("YO DAT SPACE TAKEN DUDE");
+    return true;
+  } else {
+    return false;
   }
 }
 
-Board.prototype.setMarkToSpace = function(input) {
-  // var occupiedSpaces = new Array(9);
-  // var inputtedSpace = input;
-  // occupiedSpaces[inputtedSpace] = "X";
+Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace) {
+  $("#space" + inputtedSpace).text("X");
+  marksOnBoard[inputtedSpace] = "X";
 }
 
 Board.prototype.checkWinningConditionX = function(allMarks) {
@@ -95,7 +97,7 @@ Board.prototype.checkWinningConditionO = function(allMarks) {
 // {
 // get player1  input (which space to fill)
 // according to space selected, fill space with player1 mark
-//insert mark into specific index in array (not using push)
+// insert mark into specific index in array (not using push)
 // check for winning condition
 // switch turns
 // get player2 input (which space to fill)
@@ -119,13 +121,14 @@ $(document).ready(function() {
 
     var inputtedSpace = $("select.new-move").val();
 
-    $("#space" + inputtedSpace).text("X");
+    board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace);
+
+    board.setMarkToSpace(board.occupiedSpaces, inputtedSpace);
+    // $("#space" + inputtedSpace).text("X");
+    // board.occupiedSpaces[inputtedSpace] = "X";
 
     inputtedSpace = parseInt(inputtedSpace);
 
-    board.occupiedSpaces[inputtedSpace] = "X";
-
-    console.log(board);
     console.log(board.occupiedSpaces);
 
     board.checkWinningConditionX(board.occupiedSpaces);
@@ -137,8 +140,7 @@ $(document).ready(function() {
 
     var inputtedSpace = $("select.new-move").val();
 
-    // debugger; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!BEGIN HERE
-    // board.checkIfSpaceTaken(occupiedSpaces);
+    board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace);
 
     $("#space" + inputtedSpace).text("O");
 
@@ -146,7 +148,6 @@ $(document).ready(function() {
 
     board.occupiedSpaces[inputtedSpace] = "O";
 
-    console.log(board);
     console.log(board.occupiedSpaces);
 
     board.checkWinningConditionO(board.occupiedSpaces);
