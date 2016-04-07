@@ -5,28 +5,13 @@ function Player (mark, playerColor) {
   this.playerColor = playerColor;
 }
 
-// function Space (location, state) {
-//   this.location = location;
-//   this.state = state;
-// }
-
 function Board (occupiedSpaces) {
   this.occupiedSpaces = occupiedSpaces;
 }
 
-function Game (gameOver) {
-  this.gameOver = gameOver;
+function Game (turn) {
+  this.turn = turn;
 }
-
-// Player.prototype.mark = function() {
-//   return Player.mark;
-// }
-
-// Board.prototype.initialize = function () {
-// }
-
-// Board.prototype.find = function() {
-// }
 
 Board.prototype.checkIfSpaceTaken = function (marksOnBoard, inputtedSpace) {
   if ( marksOnBoard[inputtedSpace] === "X" || marksOnBoard[inputtedSpace] === "O") {
@@ -112,6 +97,7 @@ Board.prototype.checkWinningConditionO = function(allMarks) {
 // USER INTERFACE LOGIC
 $(document).ready(function() {
 
+  var game = new Game (0);
   var board = new Board (new Array(9));
   var player1 = new Player ("X", "#D9534F");
   var player2 = new Player ("O", "#5BC0DE");
@@ -124,6 +110,7 @@ $(document).ready(function() {
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
       board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player1.mark, player1.playerColor);
 
+      game.turn++;
       $("#markX").slideUp();
       $("#markO").delay(500).slideDown();
 
@@ -135,11 +122,10 @@ $(document).ready(function() {
         $(".player-mark").prepend("Player X");
         $(".result").fadeIn();
         $("#play-again").fadeIn();
-
-        //show play again button
+      } else if ( (board.checkWinningConditionX(board.occupiedSpaces) ) === false && game.turn === 9) {
+        alert("TIE");
       }
     }
-
   });
 
   $("form#space-choice #markO").click(function() {
@@ -149,6 +135,7 @@ $(document).ready(function() {
     if ( (board.checkIfSpaceTaken(board.occupiedSpaces, inputtedSpace) ) === false) {
       board.setMarkToSpace(board.occupiedSpaces, inputtedSpace, player2.mark, player2.playerColor);
 
+      game.turn++;
       $("#markO").slideUp();
       $("#markX").delay(500).slideDown();
 
@@ -160,6 +147,8 @@ $(document).ready(function() {
         $(".player-mark").prepend("Player O");
         $(".result").fadeIn();
         $("#play-again").fadeIn();
+      } else if ( (board.checkWinningConditionO(board.occupiedSpaces) ) === false && game.turn === 9) {
+        alert("TIE");
       }
     }
   });
