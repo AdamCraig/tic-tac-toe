@@ -15,12 +15,13 @@ function Game (turn) {
 
 Board.prototype.checkIfSpaceTaken = function (marksOnBoard, inputtedSpace) {
   if ( marksOnBoard[inputtedSpace] === "X" || marksOnBoard[inputtedSpace] === "O") {
-    alert("YO DAT SPACE TAKEN DUDE");
+    $("#space" + inputtedSpace).addClass("wiggle");
+    setTimeout(function() { $("#space" + inputtedSpace).removeClass("wiggle"); }, 2000);
     return true;
   } else {
     return false;
   }
-} // ************************WIGGLE WIGGLE WIGGLE*****
+}
 
 Board.prototype.setMarkToSpace = function(marksOnBoard, inputtedSpace, playerMark, playerColor) {
   $("#space" + inputtedSpace).text(playerMark);
@@ -152,6 +153,7 @@ $(document).ready(function() {
         $("#play-again").fadeIn();
       } else if ( (board.checkWinningConditionO(board.occupiedSpaces) ) === false && game.turn === 9) {
         alert("TIE");
+        // Need to add same conditions as player 1?
       }
     }
   });
