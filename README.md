@@ -27,6 +27,7 @@ _HTML, CSS, Bootstrap, JavaScript, jQuery_
 ##GitHub Pages Link
 
 _http://adamcraig.github.io/tic-tac-toe_
+
 _http://ashleyraymaceli.github.io/tic-tac-toe_
 
 ### License
