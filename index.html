@@ -3,27 +3,30 @@
   <head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
     <script src="js/jquery.js"></script>
     <script src="js/scripts.js"></script>
     <title>Tic-Tac-TOE!</title>
   </head>
   <body>
+    <h1>Tic-Tac-TOE!</h1>
+    <div class="credits">
+      <p>Created by Adam Craig &amp; Ashley Maceli with the help of <em>Epicodus</em> - 2016</p>
+    </div>
     <div class="container">
-
-      <h1>Tic-Tac-TOE!</h1>
       <!-- Start Row 1 -->
       <div class="row" id="row1">
 
-        <div class="col-md-4" id="space0">
-          <span class="spaceNumberDisplay0"></span>
+        <div class="col-xs-4" id="space0">
+          <span class="spaceNumberDisplay0">1</span>
         </div>
 
-        <div class="col-md-4" id="space1">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space1">
+          <span class="spaceNumberDisplay">2</span>
         </div>
 
-        <div class="col-md-4" id="space2">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space2">
+          <span class="spaceNumberDisplay">3</span>
         </div>
 
       </div>
@@ -32,16 +35,16 @@
 
       <div class="row" id="row2">
 
-        <div class="col-md-4" id="space3">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space3">
+          <span class="spaceNumberDisplay">4</span>
         </div>
 
-        <div class="col-md-4" id="space4">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space4">
+          <span class="spaceNumberDisplay">5</span>
         </div>
 
-        <div class="col-md-4" id="space5">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space5">
+          <span class="spaceNumberDisplay">6</span>
         </div>
 
       </div>
@@ -50,16 +53,16 @@
 
       <div class="row" id="row3">
 
-        <div class="col-md-4" id="space6">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space6">
+          <span class="spaceNumberDisplay">7</span>
         </div>
 
-        <div class="col-md-4" id="space7">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space7">
+          <span class="spaceNumberDisplay">8</span>
         </div>
 
-        <div class="col-md-4" id="space8">
-          <span class="spaceNumberDisplay"></span>
+        <div class="col-xs-4" id="space8">
+          <span class="spaceNumberDisplay">9</span>
         </div>
 
       </div>
@@ -68,15 +71,15 @@
 
       <form id="space-choice">
         <select class="form-control new-move">
-          <option id="spaceChoice1" value="0">Upper Left Corner</option>
-          <option id="spaceChoice2" value="1">Upper Middle</option>
-          <option id="spaceChoice3" value="2">Upper Right Corner</option>
-          <option id="spaceChoice4" value="3">Middle Left</option>
-          <option id="spaceChoice5" value="4">Middle</option>
-          <option id="spaceChoice2" value="5">Middle Right</option>
-          <option id="spaceChoice3" value="6">Bottom Left Corner</option>
-          <option id="spaceChoice4" value="7">Bottom Middle</option>
-          <option id="spaceChoice5" value="8">Bottom Right Corner</option>
+          <option id="spaceChoice1" value="0">Square 1</option>
+          <option id="spaceChoice2" value="1">Square 2</option>
+          <option id="spaceChoice3" value="2">Square 3</option>
+          <option id="spaceChoice4" value="3">Square 4</option>
+          <option id="spaceChoice5" value="4">Square 5</option>
+          <option id="spaceChoice2" value="5">Square 6</option>
+          <option id="spaceChoice3" value="6">Square 7</option>
+          <option id="spaceChoice4" value="7">Square 8</option>
+          <option id="spaceChoice5" value="8">Square 9</option>
         </select>
 
         <button type="submit" class="btn btn-danger" id="markX">Mark X</button>

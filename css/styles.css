@@ -1,7 +1,12 @@
+body {
+  font-family: 'Fredoka One', sans-serif;
+}
+
 #space0, #space1, #space2, #space3, #space4, #space5, #space6, #space7, #space8 {
   height: 300px;
   width: 300px;
   border: solid white 2px;
+  border-radius: 15px;
   font-size: 11em;
   text-align: center;
   padding: 35px;
@@ -9,36 +14,53 @@
   color: white;
 }
 
+.container {
+  padding-left: 150px;
+}
+
 #markO {
   display: none;
   font-size: 100px;
+  margin-left: 25%;
 }
 
 #markX {
   font-size: 100px;
+  margin-left: 25%;
 }
 
 #play-again {
   display: none;
-  font-size: 100px;
+  font-size: 50px;
+  margin-left: 25%;
 }
 
 .new-move {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 37%;
   font-size: 18px;
+  margin-left: 25%;
 }
 
 .result, .tie-game {
   display: none;
-  font-size: 150px;
+  font-size: 50px;
   font-weight: bold;
   color: darkgreen;
+  margin-left: 25%;
+  padding-left: -20px;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 75px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.credits {
+  text-align: center;
 }
 
 .wiggle {
