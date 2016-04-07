@@ -123,7 +123,10 @@ $(document).ready(function() {
         $(".result").fadeIn();
         $("#play-again").fadeIn();
       } else if ( (board.checkWinningConditionX(board.occupiedSpaces) ) === false && game.turn === 9) {
-        alert("TIE");
+        setTimeout(function() { $("#markO").hide(); }, 500);
+        $(".new-move").hide();
+        $(".tie-game").fadeIn();
+        $("#play-again").fadeIn();
       }
     }
   });

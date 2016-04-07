@@ -30,7 +30,7 @@
   font-size: 18px;
 }
 
-.result {
+.result, .tie-game {
   display: none;
   font-size: 150px;
   font-weight: bold;
