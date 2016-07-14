@@ -1,3 +1,5 @@
+![Game Page](screenshot.png)
+
 # _Tic-Tac-TOE_
 
 #### _A webpage centered around the interactive game of Tic-Tac-Toe._
@@ -10,7 +12,7 @@ _A webpage with an interactive game of Tic-Tac-Toe for two users. Accepts input 
 
 ## Setup/Installation Requirements
 
-* _Viewing the page is easily accomplished by opening the index.html file in any internet browser. _
+* Viewing the page is easily accomplished by heading on over to its GitHub Pages link at  http://adamcraig.github.io/tic-tac-toe
 
 ## Known Bugs
 
